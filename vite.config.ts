@@ -1,12 +1,6 @@
 import { defineConfig } from "vite-plus";
 
-const ignorePatterns = [
-  "pnpm-workspace.yaml",
-  "**/*-lock.*",
-  ".editorconfig",
-  ".gitattributes",
-  ".gitmodules",
-];
+const ignorePatterns = ["pnpm-workspace.yaml", "**/*-lock.*"];
 
 export default defineConfig({
   lint: {
@@ -18,6 +12,6 @@ export default defineConfig({
   },
   fmt: {},
   staged: {
-    "*": "vp check",
+    "*": "vp check --no-error-on-unmatched-pattern",
   },
 });
