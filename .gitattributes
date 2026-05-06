@@ -2,7 +2,7 @@
 # https://github.com/v8/v8/blob/main/.gitattributes
 
 # Override Linguist
-# *.* linguist-language=Markdown
+*.* linguist-language=Markdown
 .github/** linguist-vendored
 
 # Automatically normalize line endings (to LF) for all text-based files.
