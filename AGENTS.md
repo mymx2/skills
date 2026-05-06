@@ -2,6 +2,8 @@
 
 This file is a copy of the [skills](https://github.com/vercel-labs/skills) README.md file.
 
+if project contail `skills` directory（name collision），`npx` may cause error, use `pnpx` instead.
+
 ## Install a Skill
 
 ```bash

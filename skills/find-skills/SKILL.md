@@ -136,6 +136,7 @@ npx skills add <owner/repo@skill> -g -y
 1. 说明未找到现有技能
 2. 提供利用你的通用能力直接协助完成该任务
 3. 建议用户可通过 `npx skills init` 自行创建技能
+4. 如果项目中已经存在 `skills` 目录，会导致命名撞车（name collision），造成错误，可使用 `pnpx` 或 `vpx` 运行
 
 示例：
 
