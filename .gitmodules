@@ -1,0 +1,3 @@
+[submodule "skills/link"]
+	path = skills/link
+	url = https://github.com/vercel-labs/skills
