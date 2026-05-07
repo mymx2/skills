@@ -1,264 +1,295 @@
 # skills
 
-This file is a copy of the [skills](https://github.com/vercel-labs/skills) README.md file.
+该文件是 [skills](https://github.com/vercel-labs/skills) 的 README.md 副本。
 
-if project contail `skills` directory（name collision），`npx` may cause error, use `pnpx` instead.
+如果项目中存在名为 `skills` 的目录（发生命名冲突），`npx` 可能会报错，此时请使用 `pnpx`。
 
-## Install a Skill
+---
+
+## 安装 Skill
 
 ```bash
 npx skills add vercel-labs/agent-skills
 ```
 
-### Source Formats
+---
+
+### 支持的来源格式
 
 ```bash
-# GitHub shorthand (owner/repo)
+# GitHub 简写（owner/repo）
 npx skills add vercel-labs/agent-skills
 
-# Full GitHub URL
+# 完整 GitHub URL
 npx skills add https://github.com/vercel-labs/agent-skills
 
-# Direct path to a skill in a repo
+# 指向仓库中某个 skill 的路径
 npx skills add https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines
 
 # GitLab URL
 npx skills add https://gitlab.com/org/repo
 
-# Any git URL
+# 任意 git URL
 npx skills add git@github.com:vercel-labs/agent-skills.git
 
-# Local path
+# 本地路径
 npx skills add ./my-local-skills
 ```
 
-### Options
+---
 
-| Option                    | Description                                                                                                                                        |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-g, --global`            | Install to user directory instead of project                                                                                                       |
-| `-a, --agent <agents...>` | <!-- agent-names:start -->Target specific agents (e.g., `claude-code`, `codex`). See [Supported Agents](#supported-agents)<!-- agent-names:end --> |
-| `-s, --skill <skills...>` | Install specific skills by name (use `'*'` for all skills)                                                                                         |
-| `-l, --list`              | List available skills without installing                                                                                                           |
-| `--copy`                  | Copy files instead of symlinking to agent directories                                                                                              |
-| `-y, --yes`               | Skip all confirmation prompts                                                                                                                      |
-| `--all`                   | Install all skills to all agents without prompts                                                                                                   |
+### 参数说明
 
-### Examples
+| 参数                      | 说明                                        |
+| ------------------------- | ------------------------------------------- |
+| `-g, --global`            | 安装到用户目录（而不是项目目录）            |
+| `-a, --agent <agents...>` | 指定目标 agent（如 `claude-code`, `codex`） |
+| `-s, --skill <skills...>` | 按名称安装指定 skill（使用 `'*'` 表示全部） |
+| `-l, --list`              | 仅列出可用 skills，不执行安装               |
+| `--copy`                  | 复制文件而不是使用符号链接                  |
+| `-y, --yes`               | 跳过所有确认提示                            |
+| `--all`                   | 安装所有 skills 到所有 agents（无提示）     |
+
+---
+
+### 示例
 
 ```bash
-# List skills in a repository
+# 查看仓库中的 skills
 npx skills add vercel-labs/agent-skills --list
 
-# Install specific skills
+# 安装指定 skills
 npx skills add vercel-labs/agent-skills --skill frontend-design --skill skill-creator
 
-# Install a skill with spaces in the name (must be quoted)
+# 安装带空格的 skill（需要加引号）
 npx skills add owner/repo --skill "Convex Best Practices"
 
-# Install to specific agents
+# 安装到指定 agents
 npx skills add vercel-labs/agent-skills -a claude-code -a opencode
 
-# Non-interactive installation (CI/CD friendly)
+# 非交互安装（适用于 CI/CD）
 npx skills add vercel-labs/agent-skills --skill frontend-design -g -a claude-code -y
 
-# Install all skills from a repo to all agents
+# 安装仓库中所有 skills 到所有 agents
 npx skills add vercel-labs/agent-skills --all
 
-# Install all skills to specific agents
+# 安装所有 skills 到指定 agents
 npx skills add vercel-labs/agent-skills --skill '*' -a claude-code
 
-# Install specific skills to all agents
+# 安装指定 skills 到所有 agents
 npx skills add vercel-labs/agent-skills --agent '*' --skill frontend-design
 ```
 
-### Installation Scope
+---
 
-| Scope       | Flag      | Location            | Use Case                                      |
-| ----------- | --------- | ------------------- | --------------------------------------------- |
-| **Project** | (default) | `./<agent>/skills/` | Committed with your project, shared with team |
-| **Global**  | `-g`      | `~/<agent>/skills/` | Available across all projects                 |
+### 安装范围
 
-### Installation Methods
+| 范围       | 参数 | 位置                | 使用场景             |
+| ---------- | ---- | ------------------- | -------------------- |
+| **项目级** | 默认 | `./<agent>/skills/` | 随项目提交，团队共享 |
+| **全局**   | `-g` | `~/<agent>/skills/` | 所有项目可用         |
 
-When installing interactively, you can choose:
+---
 
-| Method                    | Description                                                                                 |
-| ------------------------- | ------------------------------------------------------------------------------------------- |
-| **Symlink** (Recommended) | Creates symlinks from each agent to a canonical copy. Single source of truth, easy updates. |
-| **Copy**                  | Creates independent copies for each agent. Use when symlinks aren't supported.              |
+### 安装方式
 
-## Other Commands
+交互式安装时可选择：
 
-| Command                      | Description                                   |
-| ---------------------------- | --------------------------------------------- |
-| `npx skills list`            | List installed skills (alias: `ls`)           |
-| `npx skills find [query]`    | Search for skills interactively or by keyword |
-| `npx skills remove [skills]` | Remove installed skills from agents           |
-| `npx skills update [skills]` | Update installed skills to latest versions    |
-| `npx skills init [name]`     | Create a new SKILL.md template                |
+| 方式                 | 说明                                             |
+| -------------------- | ------------------------------------------------ |
+| **符号链接（推荐）** | 每个 agent 指向统一源，便于更新                  |
+| **复制（Copy）**     | 每个 agent 独立副本，适用于不支持 symlink 的环境 |
+
+---
+
+## 其他命令
+
+| 命令                         | 说明                            |
+| ---------------------------- | ------------------------------- |
+| `npx skills list`            | 列出已安装 skills（别名：`ls`） |
+| `npx skills find [query]`    | 搜索 skills                     |
+| `npx skills remove [skills]` | 删除 skills                     |
+| `npx skills update [skills]` | 更新 skills                     |
+| `npx skills init [name]`     | 创建新 SKILL.md                 |
+
+---
 
 ### `skills list`
 
-List all installed skills. Similar to `npm ls`.
+列出所有已安装 skills（类似 `npm ls`）
 
 ```bash
-# List all installed skills (project and global)
+# 列出全部（项目 + 全局）
 npx skills list
 
-# List only global skills
+# 仅全局
 npx skills ls -g
 
-# Filter by specific agents
+# 按 agent 过滤
 npx skills ls -a claude-code -a cursor
 ```
 
+---
+
 ### `skills find`
 
-Search for skills interactively or by keyword.
-
 ```bash
-# Interactive search (fzf-style)
+# 交互式搜索（类似 fzf）
 npx skills find
 
-# Search by keyword
+# 按关键词搜索
 npx skills find typescript
 ```
+
+---
 
 ### `skills update`
 
 ```bash
-# Update all skills (interactive scope prompt)
+# 更新所有 skills（交互选择范围）
 npx skills update
 
-# Update a single skill by name
+# 更新单个
 npx skills update my-skill
 
-# Update multiple specific skills
+# 更新多个
 npx skills update frontend-design web-design-guidelines
 
-# Update only global or project skills
+# 只更新全局或项目
 npx skills update -g
 npx skills update -p
 
-# Non-interactive (auto-detects scope: project if in a project, else global)
+# 非交互模式（自动判断范围）
 npx skills update -y
 ```
 
-| Option          | Description                                                               |
-| --------------- | ------------------------------------------------------------------------- |
-| `-g, --global`  | Only update global skills                                                 |
-| `-p, --project` | Only update project skills                                                |
-| `-y, --yes`     | Skip scope prompt (auto-detect: project if in a project dir, else global) |
-| `[skills...]`   | Update specific skills by name instead of all                             |
+| 参数            | 说明                 |
+| --------------- | -------------------- |
+| `-g, --global`  | 仅更新全局           |
+| `-p, --project` | 仅更新项目           |
+| `-y, --yes`     | 跳过选择（自动判断） |
+| `[skills...]`   | 指定更新某些 skills  |
+
+---
 
 ### `skills init`
 
 ```bash
-# Create SKILL.md in current directory
+# 当前目录创建 SKILL.md
 npx skills init
 
-# Create a new skill in a subdirectory
+# 子目录创建
 npx skills init my-skill
 ```
 
+---
+
 ### `skills remove`
 
-Remove installed skills from agents.
+删除已安装 skills：
 
 ```bash
-# Remove interactively (select from installed skills)
+# 交互式删除
 npx skills remove
 
-# Remove specific skill by name
+# 删除指定 skill
 npx skills remove web-design-guidelines
 
-# Remove multiple skills
+# 删除多个
 npx skills remove frontend-design web-design-guidelines
 
-# Remove from global scope
+# 删除全局
 npx skills remove --global web-design-guidelines
 
-# Remove from specific agents only
+# 从指定 agents 删除
 npx skills remove --agent claude-code cursor my-skill
 
-# Remove all installed skills without confirmation
+# 删除全部（无确认）
 npx skills remove --all
 
-# Remove all skills from a specific agent
+# 从某 agent 删除所有 skill
 npx skills remove --skill '*' -a cursor
 
-# Remove a specific skill from all agents
+# 从所有 agent 删除某 skill
 npx skills remove my-skill --agent '*'
 
-# Use 'rm' alias
+# 使用别名
 npx skills rm my-skill
 ```
 
-| Option         | Description                                      |
-| -------------- | ------------------------------------------------ |
-| `-g, --global` | Remove from global scope (~/) instead of project |
-| `-a, --agent`  | Remove from specific agents (use `'*'` for all)  |
-| `-s, --skill`  | Specify skills to remove (use `'*'` for all)     |
-| `-y, --yes`    | Skip confirmation prompts                        |
-| `--all`        | Shorthand for `--skill '*' --agent '*' -y`       |
+| 参数           | 说明                         |
+| -------------- | ---------------------------- |
+| `-g, --global` | 从全局删除                   |
+| `-a, --agent`  | 指定 agent（`'*'` 表示全部） |
+| `-s, --skill`  | 指定 skill                   |
+| `-y, --yes`    | 跳过确认                     |
+| `--all`        | 等价于删除全部               |
 
-## What are Agent Skills?
+---
 
-Agent skills are reusable instruction sets that extend your coding agent's capabilities. They're defined in `SKILL.md`
-files with YAML frontmatter containing a `name` and `description`.
+## 什么是 Agent Skills？
 
-Skills let agents perform specialized tasks like:
+Agent Skills 是一组可复用的指令集合，用于扩展你的编码 Agent 能力。
 
-- Generating release notes from git history
-- Creating PRs following your team's conventions
-- Integrating with external tools (Linear, Notion, etc.)
+它们定义在 `SKILL.md` 文件中，包含 YAML 头部（`name` 和 `description`）。
 
-Discover skills at **[skills.sh](https://skills.sh)**
+Skill 可以让 Agent 执行专业任务，例如：
 
-## Creating Skills
+- 根据 git 历史生成发布说明
+- 按团队规范创建 PR
+- 集成外部工具（如 Linear、Notion 等）
 
-Skills are directories containing a `SKILL.md` file with YAML frontmatter:
+👉 在 **[https://skills.sh](https://skills.sh)** 发现更多 skills
+
+---
+
+## 创建 Skill
+
+一个 Skill 是一个目录，包含 `SKILL.md`：
 
 ```markdown
 ---
 name: my-skill
-description: What this skill does and when to use it
+description: 这个 skill 做什么、何时使用
 ---
 
 # My Skill
 
-Instructions for the agent to follow when this skill is activated.
+Agent 执行该 skill 时的指令
 
-## When to Use
+## 使用场景
 
-Describe the scenarios where this skill should be used.
+说明何时触发
 
-## Steps
+## 步骤
 
-1. First, do this
-2. Then, do that
+1. 第一步
+2. 第二步
 ```
 
-### Required Fields
+---
 
-- `name`: Unique identifier (lowercase, hyphens allowed)
-- `description`: Brief explanation of what the skill does
+### 必填字段
 
-### Optional Fields
+- `name`：唯一标识（小写 + 连字符）
+- `description`：简要说明
 
-- `metadata.internal`: Set to `true` to hide the skill from normal discovery. Internal skills are only visible and
-  installable when `INSTALL_INTERNAL_SKILLS=1` is set. Useful for work-in-progress skills or skills meant only for
-  internal tooling.
+---
+
+### 可选字段
+
+- `metadata.internal`：设为 `true` 时隐藏 skill（仅在 `INSTALL_INTERNAL_SKILLS=1` 时可见）
 
 ```markdown
 ---
 name: my-internal-skill
-description: An internal skill not shown by default
+description: 内部使用 skill
 metadata:
   internal: true
 ---
 ```
+
+---
 
 ## License
 

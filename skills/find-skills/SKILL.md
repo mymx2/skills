@@ -4,7 +4,7 @@ description: 当用户提出诸如“我该如何做 X（即skill）”、“找
 metadata:
   origin: https://github.com/mymx2/skills/skills/find-skills
   author: mymx2 <https://github.com/mymx2>
-  version: 0.0.1
+  version: 2026.05.07
   source: https://skills.sh/vercel-labs/skills/find-skills
 ---
 
