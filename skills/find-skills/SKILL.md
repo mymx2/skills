@@ -1,11 +1,12 @@
 ---
 name: find-skills
 description: 当用户提出诸如“我该如何做 X（即skill）”、“找一个用于 X 的技能”、“有没有可以……的技能”等问题，或表达扩展能力的兴趣时，帮助用户发现和安装智能体技能。当用户寻找可能以可安装技能形式存在的功能时，应使用此技能。
+license: MIT
 metadata:
   origin: https://github.com/mymx2/skills/skills/find-skills
   author: mymx2 <https://github.com/mymx2>
-  version: 2026.05.07
-  source: https://skills.sh/vercel-labs/skills/find-skills
+  version: 2026.05.11
+  source: https://skills.sh/vercel-labs/skills/find-skills <MIT>
 ---
 
 # 查找技能
