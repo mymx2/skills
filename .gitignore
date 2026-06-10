@@ -22,6 +22,7 @@ cypress/downloads
 *.patch
 *.tmp
 *.local
+*.local.*
 *.java~
 *.properties~
 *.xml~
@@ -58,6 +59,9 @@ Servers
 **/.vitepress/dist/
 
 ### --------------------------------------------------------------------------- ###
+
+### GIT ###
+.worktrees
 
 ### STS ###
 .apt_generated
