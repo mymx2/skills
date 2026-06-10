@@ -10,7 +10,9 @@ export default defineConfig({
     },
     ignorePatterns: [...ignorePatterns],
   },
-  fmt: {},
+  fmt: {
+    ignorePatterns: [...ignorePatterns],
+  },
   staged: {
     "*": "vp check --no-error-on-unmatched-pattern",
   },
