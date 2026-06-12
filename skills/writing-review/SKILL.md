@@ -1,5 +1,5 @@
 ---
-name: writing-guidelines
+name: writing-review
 description: Review docs/prose for Writing Guidelines compliance
 argument-hint: <file-or-pattern>
 license: MIT
