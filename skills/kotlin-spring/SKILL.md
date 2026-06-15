@@ -42,7 +42,7 @@ metadata:
 安装：
 
 ```
-npx skills add openai/skills \
+npx skills add jetbrains/skills \
   --skill project-context-ingestion \
   --skill gradle-kotlin-dsl-doctor \
   --skill dependency-conflict-resolver \
